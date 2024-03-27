@@ -1,12 +1,32 @@
-def number_spiral(x, y):
-    if x == y:
-        spiral_array = [[],[]]
-        for i in range(1,x+1): 
-            spiral_array[0].append(i)
-            for j in range(1, y+1): 
-                spiral_array[1].append(j)
-        return print(spiral_array)
+def number_spiral(Y, X):
+    # If Y is greater than X, implying Yth row is the outer boundary
+    if Y > X:
+        # Compute the area of the inner square
+        ans = (Y - 1) * (Y - 1)
+        # Check parity of Y to determine if numbers are in increasing or decreasing order
+        if Y % 2 != 0:
+            # Add X to the area if Yth row is odd
+            add = X
+        else:
+            # Add 2*Y - X to the area if Yth row is even
+            add = 2 * Y - X
+        # Print the final result
+        print(ans + add)
+    # If X is greater than or equal to Y, implying Xth column is the outer boundary
     else:
-        return print("Los números no son iguales, no se puede hacer un espiral.")
+        # Compute the area of the inner square
+        ans = (X - 1) * (X - 1)
+        # Check parity of X to determine if numbers are in increasing or decreasing order
+        if X % 2 == 0:
+            # Add Y to the area if Xth column is even
+            add = Y
+        else:
+            # Add 2*X - Y to the area if Xth column is odd
+            add = 2 * X - Y
+        # Print the final result
+        print(ans + add)
 
-number_spiral(2, 3) 
+# Driver Code
+Y = 2
+X = 3
+number_spiral(Y, X)

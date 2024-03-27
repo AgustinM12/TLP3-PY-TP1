@@ -16,8 +16,7 @@ def palindrome_reorder(chain):
         if value % 2 != 0:
             diferences += 1
             if diferences > 1:
-                return print("NO SOLUTION")
-            
+                return "NO SOLUTION"
             
 #Construir la mitad del palíndromo y la letra auxiliar que va a ir al medio
     for letter, count in letters_frecuency.items():
@@ -25,12 +24,14 @@ def palindrome_reorder(chain):
             letters_frecuency[letter] = count // 2
         elif count % 2 != 0 and count != 1:
             letters_frecuency[letter] = count -1
+            letters_frecuency[letter] = count // 2
             aux_letter = letter
 
-
 #Construir palindromo completo
-    for letter in letters_frecuency.keys():
-        palindrome += letter
+    for letter, count in letters_frecuency.items():
+        while count > 0:
+            palindrome += letter
+            count -= 1
 
     if aux_letter:
         palindrome += aux_letter
@@ -38,7 +39,6 @@ def palindrome_reorder(chain):
     reversed_palindrome = palindrome[::-1]
     palindrome += reversed_palindrome[1:]
     
-    return print(palindrome)
+    return palindrome
 
-
-palindrome_reorder("tinaanitalavala")
+print(palindrome_reorder("ayarrbybyyowoyw"))
