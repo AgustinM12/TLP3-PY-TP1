@@ -1,32 +1,35 @@
-def number_spiral(Y, X):
-    # If Y is greater than X, implying Yth row is the outer boundary
-    if Y > X:
-        # Compute the area of the inner square
-        ans = (Y - 1) * (Y - 1)
-        # Check parity of Y to determine if numbers are in increasing or decreasing order
-        if Y % 2 != 0:
-            # Add X to the area if Yth row is odd
-            add = X
+def number_spiral(F, C):
+    # Determinar el orden de la matriz
+    if F > C:
+        #Calcular el área del cuadrado 
+        prev_area = (F - 1) * (F - 1)
+        
+        # Determinar si las el numero de columnas es par o impar
+        if F % 2 != 0:
+            #La espiral va en orden creciente
+            col_aumento = C
         else:
-            # Add 2*Y - X to the area if Yth row is even
-            add = 2 * Y - X
-        # Print the final result
-        print(ans + add)
-    # If X is greater than or equal to Y, implying Xth column is the outer boundary
+            #La espiral va en orden decreciente
+            col_aumento = 2 * F - C
+            
+        # Resultado final
+        return (prev_area + col_aumento)
     else:
-        # Compute the area of the inner square
-        ans = (X - 1) * (X - 1)
-        # Check parity of X to determine if numbers are in increasing or decreasing order
-        if X % 2 == 0:
-            # Add Y to the area if Xth column is even
-            add = Y
-        else:
-            # Add 2*X - Y to the area if Xth column is odd
-            add = 2 * X - Y
-        # Print the final result
-        print(ans + add)
+        #Calcular el área del cuadrado 
+        prev_area = (C - 1) * (C - 1)
 
-# Driver Code
-Y = 2
-X = 3
-number_spiral(Y, X)
+        # Determinar si las el numero de columnas es par o impar
+        if C % 2 == 0:
+            #La espiral va en orden creciente
+            fila_aumento = F
+        else:
+            #La espiral va en orden decreciente
+            fila_aumento = 2 * C - F
+            
+        # Resultado final
+        return (prev_area + fila_aumento)
+    
+    
+assert number_spiral(2, 2) == 3, "Error en el caso de prueba"
+
+print(number_spiral(5,5))

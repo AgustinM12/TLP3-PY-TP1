@@ -7,5 +7,6 @@ def missing_number(limit, array):
         for number in range(1, limit):
             if number not in array:
                 return number
+assert missing_number(5, [1, 2, 4, 5]) == 3, "Error en el caso de prueba"
 
 print(missing_number(5, [1, 2, 4, 5])) 
